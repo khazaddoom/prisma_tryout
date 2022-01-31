@@ -1,0 +1,596 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model AdWatchRewards {
+  ad_watch_reward_id Int       @id @default(autoincrement())
+  inventory_id       Int?
+  quantity           Int?
+  status             Int?
+  createdAt          DateTime? @db.DateTime(0)
+  updatedAt          DateTime? @db.DateTime(0)
+}
+
+model Answers {
+  answer_id          Int       @id @default(autoincrement())
+  question_unique_id String?   @db.VarChar(255)
+  option_unique_id   String?   @db.VarChar(255)
+  answer             String?   @db.VarChar(255)
+  answer_hin         String?   @db.VarChar(255)
+  question_id        Int?
+  createdAt          DateTime? @db.DateTime(0)
+  updatedAt          DateTime? @db.DateTime(0)
+}
+
+model Categories {
+  category_id        Int       @id @default(autoincrement())
+  category_unique_id String?   @db.VarChar(255)
+  category_name      String?   @db.VarChar(255)
+  category_name_hin  String?   @db.VarChar(255)
+  createdAt          DateTime? @db.DateTime(0)
+  updatedAt          DateTime? @db.DateTime(0)
+}
+
+model GameSettings {
+  setting_id   Int                @id @default(autoincrement())
+  setting_name String?            @db.VarChar(255)
+  count        Int?
+  unit         GameSettings_unit?
+  createdAt    DateTime?          @db.DateTime(0)
+  updatedAt    DateTime?          @db.DateTime(0)
+}
+
+model InfluencerCodeRewards {
+  influencer_code_reward_id Int       @id @default(autoincrement())
+  influencer_code_id        Int?
+  inventory_id              Int?
+  quantity                  Int?
+  status                    Int?
+  createdAt                 DateTime? @db.DateTime(0)
+  updatedAt                 DateTime? @db.DateTime(0)
+}
+
+model InfluencerCodes {
+  influencer_code_id Int       @id @default(autoincrement())
+  influencer_code    String?   @db.VarChar(255)
+  redeemed_by        Int?
+  status             Int?
+  createdAt          DateTime? @db.DateTime(0)
+  updatedAt          DateTime? @db.DateTime(0)
+}
+
+model Inventories {
+  inventory_id Int       @id @default(autoincrement())
+  name         String?   @db.VarChar(255)
+  quantity     Int?
+  type         String?   @db.VarChar(255)
+  createdAt    DateTime? @db.DateTime(0)
+  updatedAt    DateTime? @db.DateTime(0)
+}
+
+model InviteRewards {
+  invite_reward_id Int       @id @default(autoincrement())
+  inventory_id     Int?
+  quantity         Int?
+  invite_count     Int?
+  status           Int?
+  createdAt        DateTime? @db.DateTime(0)
+  updatedAt        DateTime? @db.DateTime(0)
+}
+
+model IplTeams {
+  team_id       Int       @id @default(autoincrement())
+  team_name     String?   @db.VarChar(255)
+  team_name_hin String?   @db.VarChar(255)
+  logo          String?   @db.VarChar(255)
+  status        Int?
+  createdAt     DateTime? @db.DateTime(0)
+  updatedAt     DateTime? @db.DateTime(0)
+}
+
+model LeaderboardRewards {
+  leaderboard_reward_id Int       @id @default(autoincrement())
+  inventory_id          Int?
+  quantity              Int?
+  tier                  Int?
+  status                Int?
+  createdAt             DateTime? @db.DateTime(0)
+  updatedAt             DateTime? @db.DateTime(0)
+}
+
+model LevelUpRewards {
+  level_up_reward_id Int       @id @default(autoincrement())
+  inventory_id       Int?
+  quantity           Int?
+  status             Int?
+  createdAt          DateTime? @db.DateTime(0)
+  updatedAt          DateTime? @db.DateTime(0)
+}
+
+model LifeRefill {
+  id        Int       @id @default(autoincrement())
+  user_id   Int?
+  lost_at   DateTime? @db.DateTime(0)
+  refill_at DateTime? @db.DateTime(0)
+  status    Int?
+  createdAt DateTime? @db.DateTime(0)
+  updatedAt DateTime? @db.DateTime(0)
+}
+
+model MasterConfig {
+  master_config_id Int       @id @default(autoincrement())
+  config_name      String?   @db.VarChar(255)
+  config_value     String?   @db.VarChar(255)
+  status           Int?
+  createdAt        DateTime? @db.DateTime(0)
+  updatedAt        DateTime? @db.DateTime(0)
+}
+
+model MasterDailyLoginRewards {
+  master_daily_login_reward_id Int       @id @default(autoincrement())
+  days_count                   Int?
+  inventory_id                 Int?
+  quantity                     Int?
+  status                       Int?
+  createdAt                    DateTime? @db.DateTime(0)
+  updatedAt                    DateTime? @db.DateTime(0)
+}
+
+model MasterLevel {
+  master_level_id Int       @id @default(autoincrement())
+  level           Int?
+  min_xp          Int?
+  max_xp          Int?
+  createdAt       DateTime? @db.DateTime(0)
+  updatedAt       DateTime? @db.DateTime(0)
+}
+
+model Missions {
+  mission_id       Int       @id @default(autoincrement())
+  mission_code     String?   @db.VarChar(255)
+  mission_name     String?   @db.VarChar(255)
+  mission_name_hin String?   @db.VarChar(255)
+  target_value     Int?
+  tracking_days    Int?
+  game_type        Int?
+  mission_type     Int?
+  createdAt        DateTime? @db.DateTime(0)
+  updatedAt        DateTime? @db.DateTime(0)
+}
+
+model MissionsRewards {
+  mission_reward_id Int       @id @default(autoincrement())
+  mission_id        Int?
+  inventory_id      Int?
+  quantity          Int?
+  createdAt         DateTime? @db.DateTime(0)
+  updatedAt         DateTime? @db.DateTime(0)
+}
+
+model News {
+  news_id           Int       @id @default(autoincrement())
+  title             String?   @db.VarChar(255)
+  description       String?   @db.VarChar(255)
+  title_hin         String?   @db.VarChar(255)
+  description_hin   String?   @db.VarChar(255)
+  sticker_image_url String?   @db.VarChar(255)
+  logo_image_url    String?   @db.VarChar(255)
+  sticker_text      String?   @db.VarChar(255)
+  news_flag         Int?
+  createdAt         DateTime? @db.DateTime(0)
+  updatedAt         DateTime? @db.DateTime(0)
+}
+
+model NewsRead {
+  news_read_id Int       @id @default(autoincrement())
+  news_id      Int?
+  user_id      Int?
+  createdAt    DateTime? @db.DateTime(0)
+  updatedAt    DateTime? @db.DateTime(0)
+}
+
+model NewsSocket {
+  id        Int       @id @default(autoincrement()) @map("_id")
+  socket_id String?   @db.VarChar(255)
+  user_id   Int?
+  createdAt DateTime? @db.DateTime(0)
+  updatedAt DateTime? @db.DateTime(0)
+}
+
+model NextMission {
+  id              Int       @id @default(autoincrement()) @map("_id")
+  user_id         Int?
+  mission_type    Int?
+  mission_id      Int?
+  completed_at    DateTime? @db.DateTime(0)
+  next_mission_at DateTime? @db.DateTime(0)
+  status          Int?
+  createdAt       DateTime? @db.DateTime(0)
+  updatedAt       DateTime? @db.DateTime(0)
+}
+
+model PackCategories {
+  id          Int       @id @default(autoincrement()) @map("_id")
+  pack_id     Int?
+  category_id Int?
+  createdAt   DateTime? @db.DateTime(0)
+  updatedAt   DateTime? @db.DateTime(0)
+}
+
+model Packs {
+  pack_id        Int       @id @default(autoincrement())
+  pack_name      String?   @db.VarChar(255)
+  pack_name_hin  String?   @db.VarChar(255)
+  difficulty     String?   @db.VarChar(255)
+  question_count Int?
+  start_date     DateTime? @db.DateTime(0)
+  end_date       DateTime? @db.DateTime(0)
+  status         Int?
+  order_number   Int?
+  createdAt      DateTime? @db.DateTime(0)
+  updatedAt      DateTime? @db.DateTime(0)
+}
+
+model PacksRewards {
+  pack_reward_id Int       @id @default(autoincrement())
+  pack_id        Int?
+  inventory_id   Int?
+  quantity       Int?
+  createdAt      DateTime? @db.DateTime(0)
+  updatedAt      DateTime? @db.DateTime(0)
+}
+
+model PushNotificationTransaction {
+  push_notification_transaction_id Int       @id @default(autoincrement())
+  user_id                          Int?
+  notification_type                Int?
+  push_token                       String?   @db.VarChar(255)
+  transaction_data                 String?   @db.VarChar(255)
+  status                           Int?
+  createdAt                        DateTime? @db.DateTime(0)
+  updatedAt                        DateTime? @db.DateTime(0)
+}
+
+model QuestionCategories {
+  id          Int       @id @default(autoincrement()) @map("_id")
+  question_id Int?
+  difficulty  String?   @db.VarChar(255)
+  category_id Int?
+  status      Int?      @default(1)
+  createdAt   DateTime? @db.DateTime(0)
+  updatedAt   DateTime? @db.DateTime(0)
+}
+
+model QuestionOfTheDayRewards {
+  question_of_the_day_reward_id Int       @id @default(autoincrement())
+  inventory_id                  Int?
+  quantity                      Int?
+  status                        Int?
+  createdAt                     DateTime? @db.DateTime(0)
+  updatedAt                     DateTime? @db.DateTime(0)
+}
+
+model Questions {
+  question_id        Int       @id @default(autoincrement())
+  question_unique_id String?   @db.VarChar(255)
+  question           String?   @db.VarChar(255)
+  question_hin       String?   @db.VarChar(255)
+  tags_id            Int?
+  difficulty         String?   @db.VarChar(255)
+  answer_id          Int?
+  status             Int?      @default(1)
+  createdAt          DateTime? @db.DateTime(0)
+  updatedAt          DateTime? @db.DateTime(0)
+}
+
+model Room {
+  room_id           Int       @id @default(autoincrement())
+  user_id           Int?
+  other_user_id     Int?
+  category_id       Int?
+  turn_id           Int?
+  turn_end_time     DateTime? @db.DateTime(0)
+  active_round_id   Int?
+  winner_id         Int?
+  notification_sent Int?
+  expiry_date       DateTime? @db.DateTime(0)
+  status            Int?
+  createdAt         DateTime? @db.DateTime(0)
+  updatedAt         DateTime? @db.DateTime(0)
+}
+
+model RoomQuestionTimer {
+  room_question_timer_id Int       @id @default(autoincrement())
+  room_id                Int?
+  room_round_id          Int?
+  user_id                Int?
+  start_time             Int?
+  end_time               Int?
+  status                 Int?
+  createdAt              DateTime? @db.DateTime(0)
+  updatedAt              DateTime? @db.DateTime(0)
+}
+
+model Round {
+  round_id      Int       @id @default(autoincrement())
+  room_id       Int?
+  room_round_id Int?
+  winner_id     Int?
+  status        Int?
+  createdAt     DateTime? @db.DateTime(0)
+  updatedAt     DateTime? @db.DateTime(0)
+}
+
+model RoundUser {
+  round_user_id Int       @id @default(autoincrement())
+  room_id       Int?
+  room_round_id Int?
+  user_id       Int?
+  score         Int?
+  gameplay_time Int?
+  status        Int?
+  createdAt     DateTime? @db.DateTime(0)
+  updatedAt     DateTime? @db.DateTime(0)
+}
+
+model SequelizeMeta {
+  name String @id @unique(map: "name") @db.VarChar(255)
+}
+
+model ShopBundle {
+  bundle_id       Int       @id @default(autoincrement())
+  bundle_name     String?   @db.VarChar(255)
+  bundle_name_hin String?   @db.VarChar(255)
+  from_date       DateTime? @db.DateTime(0)
+  to_date         DateTime? @db.DateTime(0)
+  cost            Int?
+  cost_type       Int?
+  status          Int?      @default(1)
+  sticker_text    String?   @db.VarChar(255)
+  createdAt       DateTime? @db.DateTime(0)
+  updatedAt       DateTime? @db.DateTime(0)
+  one_time_buy    Int?
+}
+
+model ShopBundleItems {
+  bundle_item_id Int       @id @default(autoincrement())
+  bundle_id      Int?
+  inventory_id   Int?
+  quantity       Int?
+  createdAt      DateTime? @db.DateTime(0)
+  updatedAt      DateTime? @db.DateTime(0)
+}
+
+model ShopItems {
+  shop_item_id  Int       @id @default(autoincrement())
+  item_name     String?   @db.VarChar(255)
+  item_name_hin String?   @db.VarChar(255)
+  inventory_id  Int?
+  type          Int?
+  quantity      Int?
+  cost_type     Int?
+  cost          Float?    @db.Float
+  product_id    String?   @db.VarChar(255)
+  status        Int?
+  createdAt     DateTime? @db.DateTime(0)
+  updatedAt     DateTime? @db.DateTime(0)
+}
+
+model SkippedQuestion {
+  id            Int       @id @default(autoincrement()) @map("_id")
+  user_pack_id  Int?
+  room_id       Int?
+  room_round_id Int?
+  user_id       Int?
+  question_id   Int?
+  game_status   Int?
+  createdAt     DateTime? @db.DateTime(0)
+  updatedAt     DateTime? @db.DateTime(0)
+}
+
+model TempAnswers {
+  temp_answer_id     Int       @id @default(autoincrement())
+  question_unique_id String?   @db.VarChar(255)
+  option_unique_id   String?   @db.VarChar(255)
+  createdAt          DateTime? @db.DateTime(0)
+  updatedAt          DateTime? @db.DateTime(0)
+}
+
+model TempCategory {
+  temp_category_id   Int       @id @default(autoincrement())
+  category_unique_id String?   @db.VarChar(255)
+  category_name_eng  String?   @db.VarChar(255)
+  category_name_hin  String?   @db.VarChar(255)
+  createdAt          DateTime? @db.DateTime(0)
+  updatedAt          DateTime? @db.DateTime(0)
+}
+
+model TempOptionsEnglish {
+  temp_option_eng_id Int       @id @default(autoincrement())
+  question_unique_id String?   @db.VarChar(255)
+  option_unique_id   String?   @db.VarChar(255)
+  option             String?   @db.VarChar(255)
+  createdAt          DateTime? @db.DateTime(0)
+  updatedAt          DateTime? @db.DateTime(0)
+}
+
+model TempOptionsHindi {
+  temp_option_hin_id Int       @id @default(autoincrement())
+  question_unique_id String?   @db.VarChar(255)
+  option_unique_id   String?   @db.VarChar(255)
+  option             String?   @db.VarChar(255)
+  createdAt          DateTime? @db.DateTime(0)
+  updatedAt          DateTime? @db.DateTime(0)
+}
+
+model TempQuestionEnglish {
+  temp_question_eng_id Int       @id @default(autoincrement())
+  question_unique_id   String?   @db.VarChar(255)
+  question             String?   @db.VarChar(255)
+  question_category    String?   @db.VarChar(255)
+  difficulty           String?   @db.VarChar(255)
+  createdAt            DateTime? @db.DateTime(0)
+  updatedAt            DateTime? @db.DateTime(0)
+}
+
+model TempQuestionHindi {
+  temp_question_hin_id Int       @id @default(autoincrement())
+  question_unique_id   String?   @db.VarChar(255)
+  question             String?   @db.VarChar(255)
+  createdAt            DateTime? @db.DateTime(0)
+  updatedAt            DateTime? @db.DateTime(0)
+}
+
+model UploadedFiles {
+  uploaded_file_id Int       @id @default(autoincrement())
+  file_name        String?   @db.VarChar(255)
+  file_url         String?   @db.VarChar(255)
+  status           Int?
+  createdAt        DateTime? @db.DateTime(0)
+  updatedAt        DateTime? @db.DateTime(0)
+}
+
+model UserBundle {
+  id        Int       @id @default(autoincrement()) @map("_id")
+  user_id   Int?
+  bundle_id Int?
+  createdAt DateTime? @db.DateTime(0)
+  updatedAt DateTime? @db.DateTime(0)
+}
+
+model UserGiftTransactions {
+  user_gift_transaction_id Int       @id @default(autoincrement())
+  user_id                  Int?
+  other_user_id            Int?
+  status                   Int?
+  createdAt                DateTime? @db.DateTime(0)
+  updatedAt                DateTime? @db.DateTime(0)
+}
+
+model UserIapTransactions {
+  user_iap_transaction_id Int       @id @default(autoincrement())
+  user_id                 Int?
+  shop_item_id            Int?
+  shop_bundle_id          Int?
+  purchase_token          String?   @db.VarChar(255)
+  status                  Int?
+  createdAt               DateTime? @db.DateTime(0)
+  updatedAt               DateTime? @db.DateTime(0)
+}
+
+model UserInventories {
+  user_inventory_id Int       @id @default(autoincrement())
+  user_id           Int?
+  quantity          Int?
+  inventory_id      Int?
+  createdAt         DateTime? @db.DateTime(0)
+  updatedAt         DateTime? @db.DateTime(0)
+}
+
+model UserInviteTransactions {
+  user_invite_transaction_id Int       @id @default(autoincrement())
+  user_id                    Int?
+  status                     Int?
+  createdAt                  DateTime? @db.DateTime(0)
+  updatedAt                  DateTime? @db.DateTime(0)
+}
+
+model UserLeaderboardRewards {
+  user_leaderboard_reward_id Int       @id @default(autoincrement())
+  user_id                    Int?
+  inventory_id               Int?
+  quantity                   Int?
+  tier                       Int?
+  status                     Int?
+  createdAt                  DateTime? @db.DateTime(0)
+  updatedAt                  DateTime? @db.DateTime(0)
+}
+
+model UserLoginRewardTransaction {
+  user_login_reward_transaction_id Int       @id @default(autoincrement())
+  user_id                          Int?
+  master_daily_login_reward_id     Int?
+  days_count                       Int?
+  claimed_at                       DateTime? @db.DateTime(0)
+  status                           Int?
+  createdAt                        DateTime? @db.DateTime(0)
+  updatedAt                        DateTime? @db.DateTime(0)
+}
+
+model UserMissions {
+  user_mission_id   Int      @id @default(autoincrement())
+  user_id           Int?
+  mission_id        Int?
+  progress          Int?
+  status            Int?
+  reward_multiplier Int?     @default(1)
+  createdAt         DateTime @db.DateTime(0)
+  updatedAt         DateTime @db.DateTime(0)
+
+  @@unique([user_id, mission_id], map: "UserMissions_mission_id_user_id_unique")
+}
+
+model UserPacks {
+  user_pack_id Int       @id @default(autoincrement())
+  pack_id      Int?
+  user_id      Int?
+  count        Int?
+  status       Int?
+  createdAt    DateTime? @db.DateTime(0)
+  updatedAt    DateTime? @db.DateTime(0)
+}
+
+model UserTempSession {
+  user_temp_session_id Int       @id @default(autoincrement())
+  user_id              Int?
+  session_id           String?   @db.VarChar(255)
+  type                 Int?
+  status               Int?
+  createdAt            DateTime? @db.DateTime(0)
+  updatedAt            DateTime? @db.DateTime(0)
+}
+
+model UserTransaction {
+  user_transaction_id Int       @id @default(autoincrement())
+  user_id             Int?
+  type                Int?
+  status              Int?
+  createdAt           DateTime? @db.DateTime(0)
+  updatedAt           DateTime? @db.DateTime(0)
+}
+
+model Users {
+  user_id            Int       @id @default(autoincrement())
+  user_name          String?   @db.VarChar(255)
+  email              String?   @db.VarChar(255)
+  type               Int?
+  user_type          Int?
+  password           String?   @db.VarChar(255)
+  device_token       String?   @db.VarChar(255)
+  access_token       String?   @db.VarChar(255)
+  facebook_id        String?   @db.VarChar(255)
+  apple_id           String?   @db.VarChar(255)
+  level              Int?
+  xp                 Int?
+  status             Int?
+  fav_ipl_team       Int?
+  android_push_token String?   @db.VarChar(255)
+  ios_push_token     String?   @db.VarChar(255)
+  language           String?   @db.VarChar(255)
+  createdAt          DateTime? @db.DateTime(0)
+  updatedAt          DateTime? @db.DateTime(0)
+  tutorial_completed Int?      @default(0)
+}
+
+enum GameSettings_unit {
+  DAYS
+  SEC
+  MINUTE
+  HOURS
+  COUNT
+}
