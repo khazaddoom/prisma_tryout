@@ -13,7 +13,6 @@ app.get('/', async (req, res) => {
             }
         }
     })
-    // console.dir(allUsers, { depth: null })
     res.json(allUsers)
 })
 
